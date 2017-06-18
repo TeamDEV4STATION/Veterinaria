@@ -1,6 +1,7 @@
 create database veterenariaINT;
 	use veterenaria;
 
+
 create table servicio(
 	cve_ser char(4),
 	nomb_ser char(20),
@@ -35,7 +36,8 @@ create table usuario(
 	constraint fk1 foreign key(cve_tipouser) references tipo(cve_tipo)
 );
 
-/*pendiente*/create table cliente(
+/*pendiente*/
+	create table cliente(
 	cve_cli char(5),
 	nom_cli char(30),
 	ap_cli char(20),
@@ -55,6 +57,32 @@ create table empleado(
 	am_emp char(20),
 	curp_emp char(18),
 	cve_useremp char(5),
-	constraint pk4 primary key(cve_emp),
-	constraint fk2 foreign key(cve_useremp) references usuario(cve_user)
+	constraint pk7 primary key(cve_emp),
+	constraint fk3 foreign key(cve_useremp) references usuario(cve_user)
+);
+
+create table marca(
+	cve_marca char(5),
+	nom_marca char(20),
+	constraint pk8 primary key(cve_marca)
+);
+
+create table producto(
+	cve_prod char(5),
+	nom_prod char(20),
+	cve_marprod char(5),
+	constraint pk9 primary key(cve_prod),
+	constraint fk4 foreign key(cve_marprod) references marca(cve_marca)
+);
+
+create table proveedor(
+	cve_prov char(5),
+	nom_prov char(30),
+	ap_prov char(20),
+	am_prov char(20),
+	constraint pk10 primary key(cve_prov),
+);
+
+create table det_ped(
+
 );
